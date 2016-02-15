@@ -58,7 +58,7 @@ $(document).ready(function(){
       var videoNodes = this.props.data.map(function(video) {
         return (
           <Video artist={video.artist} key={video.id}>
-            <h3>{video.url}</h3>
+            <h3>{video.embed}</h3>
 
           </Video>
         );
@@ -73,27 +73,27 @@ $(document).ready(function(){
 
   var VideoForm = React.createClass({
     getInitialState: function() {
-      return {artist: "", url: ""};
+      return {artist: "", embed: ""};
     },
     handleArtistChange: function(e) {
       this.setState({artist: e.target.value});
     },
     handleUrlChange: function(e) {
-      this.setState({url: e.target.value})
+      this.setState({embed: e.target.value})
     },
     handleSubmit: function(e) {
       e.preventDefault();
       var artist = this.state.artist
-      var url = this.state.url
-      this.props.onVideoSubmit({artist: artist, url: url})
-      this.setState({artist: "", url: ""});
+      var embed = this.state.embed
+      this.props.onVideoSubmit({artist: artist, embed: embed})
+      this.setState({artist: "", embed: ""});
     },
     render: function() {
       return (
         <form className="videoForm" onSubmit={this.handleSubmit}>
           <h1>Add A New Video</h1>
           <input type="text" placeholder="Artist" value={this.state.artist} onChange={this.handleArtistChange} /><br/><br/>
-          <input type="text" placeholder="Video Embed" value={this.state.url} onChange={this.handleUrlChange} /><br/><br/>
+          <input type="text" placeholder="Video Embed" value={this.state.embed} onChange={this.handleUrlChange} /><br/><br/>
           <input type="submit" value="Post" />
         </form>
       );
