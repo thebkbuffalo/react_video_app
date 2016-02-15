@@ -58,7 +58,8 @@ $(document).ready(function(){
       var videoNodes = this.props.data.map(function(video) {
         return (
           <Video artist={video.artist} key={video.id}>
-            <h3>{video.embed}</h3>
+
+            <iframe width="420" height="315" src={video.embed} frameborder="0" allowfullscreen></iframe>
 
           </Video>
         );
@@ -93,6 +94,7 @@ $(document).ready(function(){
         <form className="videoForm" onSubmit={this.handleSubmit}>
           <h1>Add A New Video</h1>
           <input type="text" placeholder="Artist" value={this.state.artist} onChange={this.handleArtistChange} /><br/><br/>
+          <p>The Annoying Part: To get the proper link, click Embed and than copy the src from the link without the quotes</p>
           <input type="text" placeholder="Video Embed" value={this.state.embed} onChange={this.handleUrlChange} /><br/><br/>
           <input type="submit" value="Post" />
         </form>
