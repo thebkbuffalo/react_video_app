@@ -92,6 +92,7 @@ $(document).ready(function(){
     render: function() {
       return (
         <form className="videoForm" onSubmit={this.handleSubmit}>
+          <hr></hr>
           <h1>Add A New Video</h1>
           <input type="text" placeholder="Artist" value={this.state.artist} onChange={this.handleArtistChange} /><br/><br/>
           <p>The Annoying Part: To get the proper link, click Embed and than copy the src from the link without the quotes</p>
