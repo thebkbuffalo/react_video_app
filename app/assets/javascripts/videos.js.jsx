@@ -95,7 +95,7 @@ $(document).ready(function(){
           <hr></hr>
           <h1>Add A New Video</h1>
           <input type="text" placeholder="Artist" value={this.state.artist} onChange={this.handleArtistChange} /><br/><br/>
-          <p>The Annoying Part: To get the proper link, click Embed and than copy the src from the link without the quotes</p>
+          <p>The Annoying Part: To get the proper link, click Embed and than copy the src from the link without the quotes. (I was trying to figure out string concatination like in Ruby, but that seems more difficult with React.)</p>
           <input type="text" placeholder="Video Embed" value={this.state.embed} onChange={this.handleUrlChange} /><br/><br/>
           <input type="submit" value="Post" />
         </form>
