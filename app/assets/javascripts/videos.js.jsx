@@ -18,15 +18,20 @@ $(document).ready(function(){
       });
     },
     handleVideoSubmit: function(video) {
+      var videos = this.state.data;
+      video.id = Date.now();
+      var newVideos = videos.concat([video]);
+      this.setState({data: newVideos});
       $.ajax({
         url: this.props.url,
         dataType: 'json',
         type: 'POST',
-        data: video,
+        data: { video: video },
         success: function(data) {
           this.setState({data: data});
         }.bind(this),
         error: function(xhr, status, err) {
+          this.setState({data: videos});
           console.error(this.props.url, status, err.toString());
         }.bind(this)
       });
@@ -52,13 +57,14 @@ $(document).ready(function(){
     render: function() {
       var videoNodes = this.props.data.map(function(video) {
         return (
-          <Video artist={video.artist} key={video.id}>
-            {video.url}
+          <Video url={video.url} key={video.id}>
+            <h1>{video.artist}</h1>
+            <h3>{video.url}</h3>
           </Video>
         );
       });
       return (
-        <div class="videoList">
+        <div className="videoList">
           {videoNodes}
         </div>
       );
@@ -78,10 +84,7 @@ $(document).ready(function(){
     handleSubmit: function(e) {
       e.preventDefault();
       var artist = this.state.artist
-      var url = this.state.videoForm
-      if(!artist || !url) {
-        return;
-      }
+      var url = this.state.video
       this.props.onVideoSubmit({artist: artist, url: url})
       this.setState({artist: "", url: ""});
     },
