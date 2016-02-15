@@ -57,9 +57,9 @@ $(document).ready(function(){
     render: function() {
       var videoNodes = this.props.data.map(function(video) {
         return (
-          <Video url={video.url} key={video.id}>
-            <h1>{video.artist}</h1>
+          <Video artist={video.artist} key={video.id}>
             <h3>{video.url}</h3>
+
           </Video>
         );
       });
@@ -84,7 +84,7 @@ $(document).ready(function(){
     handleSubmit: function(e) {
       e.preventDefault();
       var artist = this.state.artist
-      var url = this.state.video
+      var url = this.state.url
       this.props.onVideoSubmit({artist: artist, url: url})
       this.setState({artist: "", url: ""});
     },
@@ -106,6 +106,7 @@ $(document).ready(function(){
         <div className="video">
           <h2 className="artist">
             {this.props.artist}
+
           </h2>
           {this.props.children}
         </div>
