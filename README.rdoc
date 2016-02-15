@@ -1,5 +1,7 @@
 This is a very basic Rails api with a React front end.
 
+It's a video sharing application, that I would've liked to do more with, and make this more of a pop up video style app, but that will have to come later.  Until then, enjoy a basic video sharing app!
+
 To run, well I'm sure you know what to do, but:
 
 Clone down the repo.  Run your setup and migrations (this is using a postgresql DB), bundle install, and kick up a rails server.
